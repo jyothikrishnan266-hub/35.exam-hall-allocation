@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Store Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>⚡ Electronic Store Manager</h1>
+        <p>Manage products, inventory and sales</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="dashboard">
+        <div class="stat-card">
+            <span>Total Products</span>
+            <h2 id="totalProducts">0</h2>
+        </div>
+        <div class="stat-card">
+            <span>Total Stock Units</span>
+            <h2 id="totalStock">0</h2>
+        </div>
+        <div class="stat-card">
+            <span>Inventory Value</span>
+            <h2 id="inventoryValue">₹0</h2>
+        </div>
+        <div class="stat-card">
+            <span>Total Sales</span>
+            <h2 id="totalSales">₹0</h2>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Add Electronic Product</h2>
+
+        <form id="productForm">
+            <div class="form-grid">
+                <div>
+                    <label for="productName">Product Name</label>
+                    <input id="productName" required
+                           placeholder="e.g. Samsung Galaxy">
+                </div>
+
+                <div>
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="Mobile">Mobile</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Television">Television</option>
+                        <option value="Audio">Audio</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="price">Unit Price (₹)</label>
+                    <input id="price" type="number" min="0.01"
+                           step="0.01" required placeholder="25000">
+                </div>
+
+                <div>
+                    <label for="stock">Initial Stock</label>
+                    <input id="stock" type="number" min="0"
+                           step="1" required placeholder="10">
+                </div>
+            </div>
+
+            <button type="submit">+ Add Product</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Record a Sale</h2>
+
+        <form id="saleForm">
+            <div class="form-grid">
+                <div>
+                    <label for="saleProduct">Select Product</label>
+                    <select id="saleProduct" required></select>
+                </div>
+
+                <div>
+                    <label for="saleQuantity">Quantity</label>
+                    <input id="saleQuantity" type="number"
+                           min="1" step="1" value="1" required>
+                </div>
+            </div>
+
+            <p id="salePreview">Select a product to view the bill.</p>
+            <button type="submit">Complete Sale</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <div class="section-heading">
+            <h2>Product Inventory</h2>
+            <input type="search" id="searchInput"
+                   placeholder="Search products...">
+        </div>
+
+        <div class="filters">
+            <select id="filterCategory">
+                <option value="All">All Categories</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Television">Television</option>
+                <option value="Audio">Audio</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable"></tbody>
+            </table>
+        </div>
+
+        <p id="emptyProducts">No products added yet.</p>
+    </section>
+
+    <section class="card">
+        <h2>Sales History</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sale ID</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                        <th>Bill</th>
+                    </tr>
+                </thead>
+                <tbody id="salesTable"></tbody>
+            </table>
+        </div>
+
+        <p id="emptySales">No sales recorded yet.</p>
+    </section>
+
+    <p id="message" role="status"></p>
+
+</main>
+
+<footer>
+    <p>Electronic Store Manager | HTML, CSS & JavaScript</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
